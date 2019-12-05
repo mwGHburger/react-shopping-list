@@ -18,11 +18,8 @@
 
 .item p {
   font-size: 24px;
+  font-weight: 700;
   margin: 0px;
-}
-
-.item:hover p {
-  color: rgba(158, 214, 174, 1);
 }
 
 .item-like-btn {
@@ -40,6 +37,10 @@
   background: #0075a2;
 }
 
+.item-like-btn:focus {
+  outline: none;
+}
+
 .item-delete-btn {
   color: #ff2c55;
   border: 1px #ff2c55 solid;
@@ -52,4 +53,8 @@
 .item-delete-btn:hover {
   color: white;
   background: #ff2c55;
+}
+
+.item-delete-btn:focus {
+  outline: none;
 }

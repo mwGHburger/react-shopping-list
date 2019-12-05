@@ -1,5 +1,6 @@
 // import external libraries
 import React, { useState } from "react";
+import { useTransition, animated } from "react-spring";
 
 // import local components
 import Item from "./Item";
@@ -10,7 +11,7 @@ import "../css/ItemList.css";
 
 const ItemList = () => {
   // create state
-  const [itemlist, setItemList] = useState([
+  const [itemList, setItemList] = useState([
     {
       id: 1,
       itemName: "apple",
@@ -29,9 +30,19 @@ const ItemList = () => {
     likeCount: 0
   });
 
+  // animations
+  const transition = useTransition(itemList, items => items.id, {
+    //   Mounting
+    from: { opacity: 0, transform: "scaleY(0)" },
+    enter: { opacity: 1, transform: "scaleY(1)" },
+    // Unmounting
+    leave: { opacity: 0, transform: "scaleY(0)" }
+  });
+
+  // functions
   const handleDeleteItem = itemId => {
     console.log(`delete function run of item${itemId}`);
-    setItemList(itemlist.filter(item => item.id !== itemId));
+    setItemList(itemList.filter(item => item.id !== itemId));
   };
 
   const handleInputChange = event => {
@@ -46,7 +57,7 @@ const ItemList = () => {
 
   const handleAddItem = event => {
     event.preventDefault();
-    setItemList([...itemlist, placeholder]);
+    setItemList([...itemList, placeholder]);
   };
 
   return (
@@ -56,17 +67,37 @@ const ItemList = () => {
         handleInputChange={handleInputChange}
         placeholder={placeholder}
       />
-      {itemlist.map(item => (
-        <Item
-          key={item.id}
-          id={item.id}
-          itemName={item.itemName}
-          likeCount={item.likeCount}
-          handleDeleteItem={handleDeleteItem}
-        />
+
+      {/* This syntax is particular for the react-spring useTransition hook */}
+      {transition.map(({ item, key, props }) => (
+        // The parent level component must have a key
+        <animated.div key={key} style={props}>
+          {/* I've passed another unique key to the Item component */}
+          <Item
+            key={item.id}
+            id={item.id}
+            itemName={item.itemName}
+            likeCount={item.likeCount}
+            handleDeleteItem={handleDeleteItem}
+          />
+        </animated.div>
       ))}
     </div>
   );
 };
 
 export default ItemList;
+
+/* The Abyss
+
+{itemList.map(item => (
+    <Item
+        key={item.id}
+        id={item.id}
+        itemName={item.itemName}
+        likeCount={item.likeCount}
+        handleDeleteItem={handleDeleteItem}
+    />
+))} 
+
+*/
