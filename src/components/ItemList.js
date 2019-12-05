@@ -32,7 +32,7 @@ const ItemList = () => {
 
   // animations
   const transition = useTransition(itemList, items => items.id, {
-    //   Mounting
+    // Mounting
     from: { opacity: 0, transform: "scaleY(0)" },
     enter: { opacity: 1, transform: "scaleY(1)" },
     // Unmounting
