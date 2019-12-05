@@ -5,12 +5,18 @@ import React from "react";
 import ItemList from "./components/ItemList";
 
 // import styling
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
+  // inline styling
+  const inlineStyling = {
+    color: "rgb(100,100,100)"
+  };
+
   return (
-    <div>
-      <h1>App</h1>
+    <div className="app-container">
+      <h1 style={inlineStyling}>My Shopping List</h1>
       <ItemList />
     </div>
   );

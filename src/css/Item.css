@@ -1,0 +1,55 @@
+.item {
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px black solid;
+  padding: 8px 16px;
+  margin: 16px 0px;
+  box-shadow: rgb(180, 180, 180) 1.5px 2px 8px;
+  transition: 0.5s;
+}
+
+.item:hover {
+  box-shadow: rgb(50, 50, 50) 1.5px 2px 8px;
+}
+
+.item-thumbs-up {
+  color: rgb(110, 110, 110);
+}
+
+.item p {
+  font-size: 24px;
+  margin: 0px;
+}
+
+.item:hover p {
+  color: rgba(158, 214, 174, 1);
+}
+
+.item-like-btn {
+  color: #0075a2;
+  border: 1px #0075a2 solid;
+  width: 80px;
+  border-radius: 25px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.item-like-btn:hover {
+  color: white;
+  background: #0075a2;
+}
+
+.item-delete-btn {
+  color: #ff2c55;
+  border: 1px #ff2c55 solid;
+  width: 80px;
+  border-radius: 25px;
+  padding: 8px 16px;
+  transition: 0.5s;
+}
+
+.item-delete-btn:hover {
+  color: white;
+  background: #ff2c55;
+}

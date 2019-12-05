@@ -1,0 +1,30 @@
+.additem-input {
+  margin-right: 10px;
+  border: 1px rgb(210, 210, 210) solid;
+  padding: 8px 16px;
+  transition: 0.5s;
+}
+
+.additem-input:focus {
+  outline: none;
+}
+
+.additem-add-btn {
+  color: #65bf7e;
+  width: 4em;
+  border-radius: 25px;
+  border: 1px #65bf7e solid;
+  transition: 0.5s;
+}
+
+.additem-add-btn:focus {
+  outline: none;
+}
+
+.additem-add-btn:hover {
+  background: #65bf7e;
+  color: white;
+  width: 4em;
+  border-radius: 25px;
+  border: 1px #65bf7e solid;
+}

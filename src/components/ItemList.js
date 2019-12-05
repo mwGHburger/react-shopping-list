@@ -3,6 +3,10 @@ import React, { useState } from "react";
 
 // import local components
 import Item from "./Item";
+import AddItem from "./AddItem";
+
+// import styling
+import "../css/ItemList.css";
 
 const ItemList = () => {
   // create state
@@ -10,7 +14,7 @@ const ItemList = () => {
     {
       id: 1,
       itemName: "apple",
-      likeCount: 4
+      likeCount: 0
     },
     {
       id: 2,
@@ -31,6 +35,7 @@ const ItemList = () => {
   };
 
   const handleInputChange = event => {
+    console.log(Date.now());
     setPlaceHolder({
       ...placeholder,
       id: Date.now(),
@@ -45,15 +50,12 @@ const ItemList = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleAddItem}>
-        <input
-          type="text"
-          value={placeholder.itemName}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Add</button>
-      </form>
+    <div className="shopping-list-container">
+      <AddItem
+        handleAddItem={handleAddItem}
+        handleInputChange={handleInputChange}
+        placeholder={placeholder}
+      />
       {itemlist.map(item => (
         <Item
           key={item.id}
